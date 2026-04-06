@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TerorismePS</title>
-
 <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -13,44 +12,62 @@
 <div class="bg"></div>
 <div id="toast"></div>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
   <h2>TerorismePS</h2>
 
-  <div class="menu active" onclick="show('home', this)">Dashboard</div>
-  <div class="menu" onclick="show('how', this)">How To Play</div>
-  <div class="menu" onclick="show('rules', this)">Rules</div>
+  <div class="menu active" onclick="show('home', this)">
+    Dashboard <span class="indicator"></span>
+  </div>
+
+  <div class="menu" onclick="show('how', this)">
+    How To Play <span class="indicator"></span>
+  </div>
+
+  <div class="menu" onclick="show('rules', this)">
+    Rules <span class="indicator"></span>
+  </div>
 </div>
 
+<!-- MAIN -->
 <div class="main">
 
 <!-- DASHBOARD -->
 <div id="home" class="page">
-  <div class="card">
+  <div class="card big">
     <h1>Welcome to TerorismePS</h1>
     <p>Private server Growtopia Indonesia</p>
-    <button class="play">PLAY</button>
+    <button class="play ripple">PLAY</button>
   </div>
 
   <div class="grid">
-    <div class="card">
+    <div class="card stat">
       <h3>Status</h3>
       <p id="status">Checking...</p>
     </div>
 
-    <div class="card">
+    <div class="card stat">
       <h3>Players</h3>
       <p id="players">0</p>
     </div>
   </div>
 
+  <!-- PREVIEW -->
   <div class="card">
     <h3>Server Preview</h3>
-    <div class="preview-container" id="preview">
-      <img src="/preview/1.jpg">
-      <img src="/preview/2.jpg">
-      <img src="/preview/3.jpg">
-      <img src="/preview/4.jpg">
+
+    <div class="preview-wrapper">
+      <div class="preview-container" id="preview">
+        <img src="/preview/1.jpg">
+        <img src="/preview/2.jpg">
+        <img src="/preview/3.jpg">
+        <img src="/preview/4.jpg">
+        <img src="/preview/5.jpg">
+        <img src="/preview/6.jpg">
+      </div>
+      <div class="dots" id="dots"></div>
     </div>
+
   </div>
 
 </div>
@@ -66,47 +83,27 @@
       <button class="tab" onclick="showHow('ios', this)">iOS</button>
     </div>
 
-    <!-- ANDROID -->
     <div id="android" class="howContent">
       <div class="actions">
-        <button onclick="copyText(this)">Copy PTunnel URL</button>
-        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
-        <button onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
+        <button class="ripple" onclick="copyText(this)">Copy PTunnel URL</button>
+        <button class="ripple" onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
+        <button class="ripple" onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
       </div>
-<pre>
-1. Download PowerTunnel
-2. Copy URL
-3. Paste ke host settings
-4. Login
-</pre>
+<pre>Android steps...</pre>
     </div>
 
-    <!-- WINDOWS -->
     <div id="windows" class="howContent hidden">
       <div class="actions">
-        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
+        <button class="ripple" onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
       </div>
-<pre>
-1. Win + R
-2. Open hosts
-3. Paste config
-4. Save
-5. Login
-</pre>
+<pre>Windows steps...</pre>
     </div>
 
-    <!-- IOS -->
     <div id="ios" class="howContent hidden">
       <div class="actions">
-        <button onclick="copyText(this)">Copy Surge URL</button>
+        <button class="ripple" onclick="copyText(this)">Copy Surge URL</button>
       </div>
-<pre>
-1. Install Surge
-2. Import URL
-3. Paste URL
-4. Enable VPN
-5. Login
-</pre>
+<pre>iOS steps...</pre>
     </div>
 
   </div>
