@@ -13,6 +13,9 @@
 <!-- BACKGROUND -->
 <div class="bg"></div>
 
+<!-- TOAST -->
+<div id="toast"></div>
+
 <!-- SIDEBAR -->
 <div class="sidebar">
   <h2>TerorismePS</h2>
@@ -52,7 +55,6 @@
   <div class="card">
     <h2>How To Play</h2>
 
-    <!-- TAB -->
     <div class="tabs">
       <button onclick="showHow('android')" class="tab active">Android</button>
       <button onclick="showHow('windows')" class="tab">Windows</button>
@@ -63,39 +65,33 @@
     <div id="android" class="howContent">
       <div class="actions">
         <button onclick="copyText('PTUNNEL_URL')">Copy PTunnel URL</button>
-        <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
-          <button>Download Host</button>
-        </a>
-        <a href="https://powertunnel.app/download.apk" target="_blank">
-          <button>Download PowerTunnel</button>
-        </a>
+        <button onclick="downloadFile('/files/host.txt','host.txt')">Download Host</button>
+        <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk')">Download PowerTunnel</button>
       </div>
 
 <pre>
 1. Download PowerTunnel app.
-2. Copy host URL (button di atas).
+2. Copy host URL.
 3. Buka PowerTunnel.
 4. Masuk ke Host Settings.
 5. Paste URL.
-6. Done, login ke GTPS.
+6. Login GTPS.
 </pre>
     </div>
 
     <!-- WINDOWS -->
     <div id="windows" class="howContent hidden">
       <div class="actions">
-        <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
-          <button>Download Host</button>
-        </a>
+        <button onclick="downloadFile('/files/host.txt','host.txt')">Download Host</button>
       </div>
 
 <pre>
 1. Press Win + R
 2. Ketik: C:\Windows\System32\drivers\etc
 3. Edit file "hosts"
-4. Paste host dari file download
+4. Paste host
 5. Save
-6. Login Growtopia
+6. Login
 </pre>
     </div>
 
@@ -107,10 +103,10 @@
 
 <pre>
 1. Download Surge 5
-2. Import profile dari URL
-3. Paste URL dari tombol di atas
+2. Import URL
+3. Paste URL
 4. Aktifkan VPN
-5. Login Growtopia
+5. Login
 </pre>
     </div>
 
