@@ -52,36 +52,68 @@
   <div class="card">
     <h2>How To Play</h2>
 
-    <h3>Windows</h3>
-<pre>
-1. Press ⊞ Win+R (Windows Key + R) to open the "Run" window.
-2. Type C:\Windows\System32\drivers\etc in the textbox.
-3. Find the file named hosts.
-4. Right-click on the "hosts" file and edit it with Notepad/text editor.
-5. Download the host file, open it, copy and add the IP above.
-6. Save, then log in to your Growtopia.
-</pre>
+    <!-- TAB -->
+    <div class="tabs">
+      <button onclick="showHow('android')" class="tab active">Android</button>
+      <button onclick="showHow('windows')" class="tab">Windows</button>
+      <button onclick="showHow('ios')" class="tab">iOS</button>
+    </div>
 
-    <h3>Android</h3>
-<pre>
-1. First, download Powertunnel APP from here.
-2. Then click on the "Powertunnel" button.
-3. It will copy the Powertunnel host link.
-4. Open the Powertunnel app, click the three-line icon, then click the host settings icon.
-5. Paste the copied Powertunnel host URL. Change the host update period from 12 hours to "on start".
-6. Now you can log in to your GTPS!
-</pre>
+    <!-- ANDROID -->
+    <div id="android" class="howContent">
+      <div class="actions">
+        <button onclick="copyText('PTUNNEL_URL')">Copy PTunnel URL</button>
+        <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
+          <button>Download Host</button>
+        </a>
+        <a href="https://powertunnel.app/download.apk" target="_blank">
+          <button>Download PowerTunnel</button>
+        </a>
+      </div>
 
-    <h3>iOS</h3>
 <pre>
-1. Download an app called "Surge 5" from the App Store.
-2. Press "OK".
-3. Click on "Default.conf".
-4. Click on "IMPORT" → "Download Profile from URL".
-5. Paste the URL you copied when clicking the iOS host button above, then click "OK" and "Done".
-6. Press "SETUP", agree to the policy, then click "OK" and "Allow" for VPN Configuration.
-7. Done! Now open Growtopia and connect.
+1. Download PowerTunnel app.
+2. Copy host URL (button di atas).
+3. Buka PowerTunnel.
+4. Masuk ke Host Settings.
+5. Paste URL.
+6. Done, login ke GTPS.
 </pre>
+    </div>
+
+    <!-- WINDOWS -->
+    <div id="windows" class="howContent hidden">
+      <div class="actions">
+        <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
+          <button>Download Host</button>
+        </a>
+      </div>
+
+<pre>
+1. Press Win + R
+2. Ketik: C:\Windows\System32\drivers\etc
+3. Edit file "hosts"
+4. Paste host dari file download
+5. Save
+6. Login Growtopia
+</pre>
+    </div>
+
+    <!-- IOS -->
+    <div id="ios" class="howContent hidden">
+      <div class="actions">
+        <button onclick="copyText('SURGE_URL')">Copy Surge URL</button>
+      </div>
+
+<pre>
+1. Download Surge 5
+2. Import profile dari URL
+3. Paste URL dari tombol di atas
+4. Aktifkan VPN
+5. Login Growtopia
+</pre>
+    </div>
+
   </div>
 </div>
 
