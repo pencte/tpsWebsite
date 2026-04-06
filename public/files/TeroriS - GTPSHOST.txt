@@ -1,0 +1,4 @@
+139.99.72.27 www.growtopia1.com
+10.1.0.230 www.growtopia2.com
+
+# TeroriS ~ delivered by gtpshost.com
