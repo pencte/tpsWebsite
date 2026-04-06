@@ -28,18 +28,19 @@ body{
   overflow-x:hidden;
 }
 
-/* PARALLAX BG */
+/* BACKGROUND */
 .bg{
   position:fixed;
   width:100%;
   height:100%;
-  background:radial-gradient(circle at 20% 20%,rgba(124,156,255,0.15),transparent),
-             radial-gradient(circle at 80% 80%,rgba(124,156,255,0.1),transparent);
+  background:
+  radial-gradient(circle at 20% 20%,rgba(124,156,255,0.15),transparent),
+  radial-gradient(circle at 80% 80%,rgba(124,156,255,0.1),transparent);
   z-index:-2;
   transition:.1s;
 }
 
-/* NAVBAR GLASS */
+/* NAVBAR */
 header{
   position:sticky;
   top:0;
@@ -56,7 +57,6 @@ header.scrolled{
   background:rgba(10,12,18,0.8);
 }
 
-/* NAV */
 nav a{
   margin-left:20px;
   color:var(--sub);
@@ -90,7 +90,7 @@ nav a.active::after{
 /* HERO */
 .hero{text-align:center}
 
-/* BUTTON MAGNET */
+/* BUTTON */
 .btn{
   margin-top:20px;
   padding:12px 24px;
@@ -100,7 +100,6 @@ nav a.active::after{
   color:white;
   cursor:pointer;
   transition:.2s;
-  position:relative;
 }
 
 /* GRID */
@@ -121,6 +120,11 @@ nav a.active::after{
   padding:20px;
   position:relative;
   overflow:hidden;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
 }
 
 /* CARD LIGHT */
@@ -141,8 +145,15 @@ nav a.active::after{
   opacity:1;
 }
 
-/* STATUS */
+/* TEXT */
 .status{color:var(--sub)}
+
+pre{
+  background:#0d1016;
+  padding:15px;
+  border-radius:10px;
+  color:#8effc1;
+}
 
 footer{
   text-align:center;
@@ -172,7 +183,7 @@ footer{
   <div class="hero">
     <h1>Terorisme Private Server</h1>
     <p>Smooth & modern experience</p>
-    <button class="btn" id="play">Play Now</button>
+    <button class="btn">Play Now</button>
   </div>
 
   <div class="grid">
@@ -184,6 +195,74 @@ footer{
     <div class="card">
       <h3>Performance</h3>
       <div class="status">Stable • Low latency</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div class="tab" id="how">
+  <div class="grid">
+
+    <div class="card">
+      <h3>Windows</h3>
+<pre>
+103.59.161.68 growtopia1.com
+103.59.161.68 growtopia2.com
+</pre>
+    </div>
+
+    <div class="card">
+      <h3>iOS</h3>
+<pre>
+[Host]
+growtopia1.com = 103.59.161.68
+growtopia2.com = 103.59.161.68
+</pre>
+    </div>
+
+    <div class="card">
+      <h3>Android</h3>
+<pre>
+https://gtpshost.com/raw/GrowtopiaFS
+</pre>
+    </div>
+
+  </div>
+</div>
+
+<!-- COMMUNITY -->
+<div class="tab" id="community">
+  <div class="grid">
+    <div class="card">
+      <button class="btn">WhatsApp</button>
+    </div>
+    <div class="card">
+      <button class="btn">Discord</button>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<div class="tab" id="download">
+  <div class="grid">
+    <div class="card">
+      <button class="btn">Download APK</button>
+    </div>
+    <div class="card">
+      <button class="btn">All in One Host</button>
+    </div>
+  </div>
+</div>
+
+<!-- RULES -->
+<div class="tab" id="rules">
+  <div class="grid">
+    <div class="card">
+      <ul>
+        <li>No spam</li>
+        <li>No scam</li>
+        <li>No cheat</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -200,13 +279,13 @@ function tab(e,id){
   e.target.classList.add("active");
 }
 
-/* SMOOTH COUNTER */
+/* STATUS SMOOTH */
 let count=0;
 setInterval(()=>{
   let target=Math.floor(Math.random()*150);
-  let interval=setInterval(()=>{
+  let i=setInterval(()=>{
     if(count<target) count++;
-    else clearInterval(interval);
+    else clearInterval(i);
     document.getElementById("status").innerText="Online • "+count+" players";
   },20);
 },3000);
@@ -224,25 +303,13 @@ window.addEventListener("scroll",()=>{
   else nav.classList.remove("scrolled");
 });
 
-/* CARD LIGHT FOLLOW */
+/* CARD LIGHT */
 document.querySelectorAll(".card").forEach(card=>{
   card.addEventListener("mousemove",e=>{
     let rect=card.getBoundingClientRect();
     card.style.setProperty('--x', e.clientX-rect.left+'px');
     card.style.setProperty('--y', e.clientY-rect.top+'px');
   });
-});
-
-/* MAGNET BUTTON */
-const btn=document.getElementById("play");
-btn.addEventListener("mousemove",e=>{
-  const rect=btn.getBoundingClientRect();
-  const x=e.clientX-rect.left-rect.width/2;
-  const y=e.clientY-rect.top-rect.height/2;
-  btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
-});
-btn.addEventListener("mouseleave",()=>{
-  btn.style.transform="translate(0,0)";
 });
 
 </script>
