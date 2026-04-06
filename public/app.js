@@ -73,3 +73,11 @@ setInterval(()=>{
   document.getElementById("status").innerText="Online";
   document.getElementById("players").innerText=Math.floor(Math.random()*200);
 },2000);
+
+// SOUND FEEL (OPSIONAL VIBE)
+document.querySelectorAll("button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    btn.style.filter="brightness(1.2)";
+    setTimeout(()=>btn.style.filter="brightness(1)",150);
+  });
+});
