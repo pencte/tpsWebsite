@@ -22,15 +22,9 @@ body {
   color: #333;
 }
 
-/* PARTICLE */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+/* TAB */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
 header {
   background: linear-gradient(135deg, var(--pink), #ff8fc7);
@@ -44,6 +38,7 @@ nav a {
   text-decoration: none;
   margin: 0 12px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .logo {
@@ -122,9 +117,6 @@ footer {
 
 <body>
 
-<!-- PARTICLE -->
-<canvas id="particles"></canvas>
-
 <header>
   <img src="gtfs.jpg" class="logo">
   <h1>Growtopia Fiki Server</h1>
@@ -135,11 +127,11 @@ footer {
   </p>
 
   <nav>
-    <a href="#home" data-id="Beranda" data-en="Home">Beranda</a>
-    <a href="#how" data-id="Cara Bermain" data-en="How to Play">Cara Bermain</a>
-    <a href="#community" data-id="Komunitas" data-en="Community">Komunitas</a>
-    <a href="#download" data-id="Download" data-en="Download">Download</a>
-    <a href="#rules" data-id="Peraturan" data-en="Rules">Peraturan</a>
+    <a onclick="openTab('home')">Beranda</a>
+    <a onclick="openTab('how')">Cara Bermain</a>
+    <a onclick="openTab('community')">Komunitas</a>
+    <a onclick="openTab('download')">Download</a>
+    <a onclick="openTab('rules')">Peraturan</a>
   </nav>
 
   <div class="lang">
@@ -149,9 +141,8 @@ footer {
 </header>
 
 <!-- HOME -->
-<div class="container" id="home">
-  <h2 data-id="Selamat Datang di GTFS!"
-      data-en="Welcome to GTFS!">
+<div class="container tab-content active" id="home">
+  <h2 data-id="Selamat Datang di GTFS!" data-en="Welcome to GTFS!">
       Selamat Datang di GTFS!
   </h2>
 
@@ -160,17 +151,11 @@ footer {
      Server gratis, stabil, dan ringan untuk semua pemain.
   </p>
 
-  <!-- STATUS -->
-  <div style="margin-top:20px;">
-    Status: <span id="serverStatus">Loading...</span><br>
-    Player Online: <span id="playerCount">0</span>
-  </div>
-
   <img src="gtfs2.jpg" class="logo">
 </div>
 
-<!-- HOW TO PLAY -->
-<div class="container" id="how">
+<!-- HOW -->
+<div class="container tab-content" id="how">
   <div class="card">
     <h2 data-id="Cara Bermain" data-en="How to Play">Cara Bermain</h2>
 
@@ -183,15 +168,12 @@ footer {
 <pre>
 103.59.161.68 growtopia1.com
 103.59.161.68 growtopia2.com
-103.59.161.68 www.growtopia1.com
-103.59.161.68 www.growtopia2.com
 </pre>
 
-    <h3>🍎 iOS (Surge)</h3>
+    <h3>🍎 iOS</h3>
 <pre>
 [Host]
 growtopia1.com = 103.59.161.68
-growtopia2.com = 103.59.161.68
 </pre>
 
     <h3>🤖 Android</h3>
@@ -202,80 +184,43 @@ growtopia2.com = 103.59.161.68
 </div>
 
 <!-- COMMUNITY -->
-<div class="container" id="community">
+<div class="container tab-content" id="community">
   <h2>Komunitas</h2>
   <a class="button" href="#">WhatsApp</a>
   <a class="button" href="#">Discord</a>
 </div>
 
 <!-- DOWNLOAD -->
-<div class="container" id="download">
+<div class="container tab-content" id="download">
   <h2>Download</h2>
   <a class="button" href="#">APK</a>
 </div>
 
 <!-- RULES -->
-<div class="container" id="rules">
+<div class="container tab-content" id="rules">
   <h2>Peraturan Server</h2>
 </div>
 
 <footer>
-  © 2022 TerorismePS Server
+  © 2022 TerorismePS Server • Made by Test
 </footer>
 
 <script>
 function setLang(lang) {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-id]").forEach(el => {
-    const text = el.getAttribute("data-" + lang);
-    if (text) el.textContent = text;
+    el.textContent = el.getAttribute("data-" + lang);
   });
 }
 
-/* STATUS */
-async function getStatus() {
-  try {
-    const res = await fetch("/api/status");
-    const data = await res.json();
-
-    const status = document.getElementById("serverStatus");
-    const player = document.getElementById("playerCount");
-
-    status.textContent = data.status.toUpperCase();
-    player.textContent = data.players;
-
-    status.style.color = data.status === "online" ? "#00ff9d" : "red";
-
-  } catch {
-    document.getElementById("serverStatus").textContent = "ERROR";
-  }
-}
-
-setInterval(getStatus, 5000);
-getStatus();
-
-/* PARTICLE */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let p = [];
-for(let i=0;i<60;i++){
-  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height});
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  p.forEach(pt=>{
-    ctx.fillRect(pt.x,pt.y,2,2);
-    pt.y+=0.5;
-    if(pt.y>canvas.height) pt.y=0;
+/* TAB */
+function openTab(tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => {
+    el.classList.remove("active");
   });
-}
 
-setInterval(draw,30);
+  document.getElementById(tabId).classList.add("active");
+}
 </script>
 
 </body>
