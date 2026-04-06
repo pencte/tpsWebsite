@@ -25,7 +25,7 @@
 
 <!-- DASHBOARD -->
 <div id="home" class="page">
-  <div class="card big">
+  <div class="card">
     <h1>Welcome to TerorismePS</h1>
     <p>Private server Growtopia Indonesia</p>
     <button class="play">PLAY</button>
@@ -43,10 +43,8 @@
     </div>
   </div>
 
-  <!-- SERVER PREVIEW -->
   <div class="card">
     <h3>Server Preview</h3>
-
     <div class="preview-container" id="preview">
       <img src="/preview/1.jpg">
       <img src="/preview/2.jpg">
@@ -63,24 +61,23 @@
     <h2>How To Play</h2>
 
     <div class="tabs">
-      <button onclick="showHow('android', this)" class="tab active">Android</button>
-      <button onclick="showHow('windows', this)" class="tab">Windows</button>
-      <button onclick="showHow('ios', this)" class="tab">iOS</button>
+      <button class="tab active" onclick="showHow('android', this)">Android</button>
+      <button class="tab" onclick="showHow('windows', this)">Windows</button>
+      <button class="tab" onclick="showHow('ios', this)">iOS</button>
     </div>
 
     <!-- ANDROID -->
     <div id="android" class="howContent">
       <div class="actions">
-        <button onclick="copyText('PTUNNEL_URL', this)">Copy PTunnel URL</button>
+        <button onclick="copyText(this)">Copy PTunnel URL</button>
         <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
-        <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
+        <button onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
       </div>
-
 <pre>
 1. Download PowerTunnel
 2. Copy URL
 3. Paste ke host settings
-4. Login GTPS
+4. Login
 </pre>
     </div>
 
@@ -89,7 +86,6 @@
       <div class="actions">
         <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
       </div>
-
 <pre>
 1. Win + R
 2. Open hosts
@@ -102,9 +98,8 @@
     <!-- IOS -->
     <div id="ios" class="howContent hidden">
       <div class="actions">
-        <button onclick="copyText('SURGE_URL', this)">Copy Surge URL</button>
+        <button onclick="copyText(this)">Copy Surge URL</button>
       </div>
-
 <pre>
 1. Install Surge
 2. Import URL
