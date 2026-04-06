@@ -55,7 +55,7 @@ body{
   padding:30px;
 }
 
-/* PAGE ANIMATION */
+/* PAGE */
 .page{
   animation:fade .3s;
 }
@@ -74,10 +74,6 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-.card:hover{
-  transform:translateY(-3px);
-}
-
 /* GRID */
 .grid{
   display:grid;
@@ -85,7 +81,7 @@ body{
   gap:20px;
 }
 
-/* PLAY BUTTON */
+/* PLAY */
 .play{
   padding:12px 30px;
   background:#6c8cff;
@@ -93,17 +89,9 @@ body{
   border-radius:10px;
   color:white;
   cursor:pointer;
-  transition:.2s;
 }
 
-.play:hover{
-  transform:scale(1.05);
-}
-
-/* ========================= */
-/* HOW TO PLAY UI            */
-/* ========================= */
-
+/* TABS */
 .tabs{
   display:flex;
   gap:10px;
@@ -112,12 +100,10 @@ body{
 
 .tab{
   padding:8px 16px;
-  border:none;
   background:#1d2230;
+  border:none;
   color:#aaa;
   border-radius:8px;
-  cursor:pointer;
-  transition:.2s;
 }
 
 .tab.active{
@@ -125,7 +111,7 @@ body{
   color:white;
 }
 
-/* ACTION BUTTON GROUP */
+/* ACTIONS */
 .actions{
   margin-top:15px;
   margin-bottom:20px;
@@ -144,24 +130,10 @@ body{
   transition:.2s;
 }
 
-.actions button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-/* COPY EFFECT */
-.actions button.copied{
-  background:#00c853;
-}
-
-/* DOWNLOAD EFFECT */
-.actions button.downloading{
-  background:#ffaa00;
-}
-
-.actions button.done{
-  background:#00c853;
-}
+/* EFFECT */
+.actions button.copied{ background:#00c853; }
+.actions button.downloading{ background:#ffaa00; }
+.actions button.done{ background:#00c853; }
 
 /* TOAST */
 #toast{
@@ -169,13 +141,11 @@ body{
   bottom:20px;
   right:20px;
   background:#1d2230;
-  color:white;
   padding:12px 18px;
   border-radius:10px;
   opacity:0;
   transform:translateY(20px);
   transition:.3s;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 #toast.show{
@@ -183,7 +153,39 @@ body{
   transform:translateY(0);
 }
 
-/* HIDDEN */
-.hidden{
-  display:none;
+/* PREVIEW */
+.preview-container{
+  display:flex;
+  gap:15px;
+  overflow:hidden;
+}
+
+.preview-container img{
+  width:260px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .sidebar{
+    position:fixed;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    top:0;
+  }
+
+  .sidebar h2{ display:none; }
+
+  .main{
+    margin-top:70px;
+    padding:15px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
 }
