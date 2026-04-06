@@ -14,49 +14,41 @@
 <body>
 
 <div class="bg"></div>
+<div class="particles"></div>
 <div id="toast"></div>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
   <h2>TerorismePS</h2>
 
-  <div class="menu active" onclick="show('home', this)">
-    Dashboard <span class="indicator"></span>
-  </div>
-
-  <div class="menu" onclick="show('how', this)">
-    How To Play <span class="indicator"></span>
-  </div>
-
-  <div class="menu" onclick="show('rules', this)">
-    Rules <span class="indicator"></span>
-  </div>
+  <div class="menu active" onclick="show('home', this)">Dashboard</div>
+  <div class="menu" onclick="show('how', this)">How To Play</div>
+  <div class="menu" onclick="show('rules', this)">Rules</div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-<!-- DASHBOARD -->
+<!-- HOME -->
 <div id="home" class="page">
   <div class="card big">
     <h1>Welcome to TerorismePS</h1>
-    <p>Private server Growtopia Indonesia</p>
+    <p>Launcher Mode Activated</p>
     <button class="play ripple">PLAY</button>
   </div>
 
   <div class="grid">
-    <div class="card stat">
+    <div class="card stat glow">
       <h3>Status</h3>
       <p id="status">Checking...</p>
     </div>
 
-    <div class="card stat">
+    <div class="card stat glow">
       <h3>Players</h3>
       <p id="players">0</p>
     </div>
   </div>
 
-  <!-- PREVIEW -->
   <div class="card">
     <h3>Server Preview</h3>
 
@@ -88,41 +80,25 @@
 
     <div id="android" class="howContent">
       <div class="actions">
-        <button onclick="copyText(this)">Copy PTunnel URL</button>
+        <button onclick="copyText(this)">Copy URL</button>
         <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
-        <button onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
+        <button onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download APK</button>
       </div>
-<pre>
-1. Download PowerTunnel
-2. Copy URL
-3. Paste ke host settings
-4. Login
-</pre>
+<pre>Android Steps...</pre>
     </div>
 
     <div id="windows" class="howContent hidden">
       <div class="actions">
         <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
       </div>
-<pre>
-1. Win + R
-2. Open hosts
-3. Paste config
-4. Save
-5. Login
-</pre>
+<pre>Windows Steps...</pre>
     </div>
 
     <div id="ios" class="howContent hidden">
       <div class="actions">
-        <button onclick="copyText(this)">Copy Surge URL</button>
+        <button onclick="copyText(this)">Copy URL</button>
       </div>
-<pre>
-1. Install Surge
-2. Import URL
-3. Enable VPN
-4. Login
-</pre>
+<pre>iOS Steps...</pre>
     </div>
 
   </div>
@@ -135,7 +111,7 @@
     <ul>
       <li>No spam</li>
       <li>No cheat</li>
-      <li>Be respectful</li>
+      <li>Respect others</li>
     </ul>
   </div>
 </div>
@@ -144,9 +120,9 @@
 
 <!-- MOBILE NAV -->
 <div class="bottom-nav">
-  <div onclick="show('home', this)" class="nav-item active">🏠</div>
-  <div onclick="show('how', this)" class="nav-item">🎮</div>
-  <div onclick="show('rules', this)" class="nav-item">📜</div>
+  <div onclick="show('home', this)">🏠</div>
+  <div onclick="show('how', this)">🎮</div>
+  <div onclick="show('rules', this)">📜</div>
 </div>
 
 <script src="/app.js"></script>
