@@ -1,4 +1,3 @@
-/* NAV */
 function show(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
@@ -7,7 +6,6 @@ function show(id){
   event.target.classList.add("active");
 }
 
-/* HOW TAB */
 function showHow(type){
   document.querySelectorAll(".howContent").forEach(el=>el.classList.add("hidden"));
   document.getElementById(type).classList.remove("hidden");
@@ -16,30 +14,18 @@ function showHow(type){
   event.target.classList.add("active");
 }
 
-/* TOAST */
 function showToast(text){
   const toast=document.getElementById("toast");
   toast.innerText=text;
   toast.classList.add("show");
 
-  setTimeout(()=>{
-    toast.classList.remove("show");
-  },2000);
+  setTimeout(()=>toast.classList.remove("show"),2000);
 }
 
-/* COPY */
 function copyText(type){
-  let text="";
+  const url = window.location.origin + "/raw/terorismeps";
 
-  if(type==="PTUNNEL_URL"){
-    text="https://gtpshost.com/raw/GrowtopiaFS";
-  }
-
-  if(type==="SURGE_URL"){
-    text="https://gtpshost.com/raw/GrowtopiaFS";
-  }
-
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(url);
 
   const btn=event.target;
   const original=btn.innerText;
@@ -47,7 +33,7 @@ function copyText(type){
   btn.innerText="Copied!";
   btn.classList.add("copied");
 
-  showToast("Copied to clipboard 🚀");
+  showToast("Copied URL 🚀");
 
   setTimeout(()=>{
     btn.innerText=original;
@@ -55,7 +41,6 @@ function copyText(type){
   },1500);
 }
 
-/* DOWNLOAD */
 function downloadFile(url,name){
   const btn=event.target;
   const original=btn.innerText;
@@ -86,17 +71,11 @@ function downloadFile(url,name){
   },1000);
 }
 
-/* FAKE STATUS */
-function fakeStatus(){
-  let players=Math.floor(Math.random()*100);
-
+setInterval(()=>{
   document.getElementById("status").innerText="Online";
-  document.getElementById("players").innerText=players;
-}
+  document.getElementById("players").innerText=Math.floor(Math.random()*100);
+},2000);
 
-setInterval(fakeStatus,2000);
-
-/* PLAY */
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
