@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TerorismePS</title>
 
 <link rel="stylesheet" href="style.css">
@@ -11,56 +10,71 @@
 
 <body>
 
-<!-- BACKGROUND FX -->
-<div class="parallax">
-  <div class="layer" id="layer1"></div>
-  <div class="layer" id="layer2"></div>
-</div>
-
-<div class="cursor" id="cursor"></div>
-<canvas id="particles"></canvas>
+<!-- BACKGROUND -->
+<div class="bg"></div>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
   <h2>TerorismePS</h2>
-  <div onclick="show('home')">Dashboard</div>
-  <div onclick="show('players')">Players</div>
-  <div onclick="show('logs')">Logs</div>
-  <div onclick="show('admin')">Admin</div>
+
+  <div class="menu active" onclick="show('home')">Dashboard</div>
+  <div class="menu" onclick="show('how')">How To Play</div>
+  <div class="menu" onclick="show('rules')">Rules</div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
 <!-- DASHBOARD -->
-<div id="home">
-  <div class="card">
-    <h3>Status Server</h3>
-    <p id="status">Loading...</p>
+<div id="home" class="page">
+  <div class="card big">
+    <h1>Welcome to TerorismePS</h1>
+    <p>Private server Growtopia Indonesia</p>
+
+    <button class="play">PLAY</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Status</h3>
+      <p id="status">Checking...</p>
+    </div>
+
+    <div class="card">
+      <h3>Players</h3>
+      <p id="players">0</p>
+    </div>
   </div>
 </div>
 
-<!-- PLAYERS -->
-<div id="players" class="hidden">
+<!-- HOW -->
+<div id="how" class="page hidden">
   <div class="card">
-    <h3>Player List</h3>
-    <ul id="playerList"></ul>
+    <h2>How To Play</h2>
+
+    <h3>Windows</h3>
+<pre>
+103.59.161.68 growtopia1.com
+103.59.161.68 growtopia2.com
+</pre>
+
+    <h3>Android</h3>
+    <p>Gunakan vHost / PTunnel</p>
+
+    <h3>iOS</h3>
+    <p>Gunakan Surge</p>
   </div>
 </div>
 
-<!-- LOG -->
-<div id="logs" class="hidden">
+<!-- RULES -->
+<div id="rules" class="page hidden">
   <div class="card">
-    <h3>Logs</h3>
-    <div id="logBox"></div>
-  </div>
-</div>
-
-<!-- ADMIN -->
-<div id="admin" class="hidden">
-  <div class="card">
-    <input id="cmd" placeholder="command...">
-    <button onclick="send()">Execute</button>
+    <h2>Rules</h2>
+    <ul>
+      <li>No spam</li>
+      <li>No cheat</li>
+      <li>Be respectful</li>
+    </ul>
   </div>
 </div>
 
