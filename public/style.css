@@ -1,24 +1,139 @@
+/* RESET */
+body{
+  margin:0;
+  font-family:Inter, Arial, sans-serif;
+  background:#0b0d12;
+  color:#eaeefb;
+  display:flex;
+}
+
+/* BACKGROUND */
+.bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:
+    radial-gradient(circle at 20% 20%, #6c8cff22, transparent),
+    radial-gradient(circle at 80% 80%, #00ff9922, transparent);
+  z-index:-1;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:220px;
+  background:#12151c;
+  padding:20px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar h2{
+  margin-bottom:20px;
+}
+
+.menu{
+  padding:10px;
+  margin:5px 0;
+  cursor:pointer;
+  border-radius:8px;
+  color:#aaa;
+  transition:.2s;
+}
+
+.menu:hover{
+  background:#1d2230;
+  color:white;
+}
+
+.menu.active{
+  background:#6c8cff33;
+  color:white;
+}
+
+/* MAIN */
+.main{
+  flex:1;
+  padding:30px;
+}
+
+/* PAGE ANIMATION */
+.page{
+  animation:fade .3s;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* CARD */
+.card{
+  background:#161a22;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.card:hover{
+  transform:translateY(-3px);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+/* PLAY BUTTON */
+.play{
+  padding:12px 30px;
+  background:#6c8cff;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.play:hover{
+  transform:scale(1.05);
+}
+
 /* ========================= */
-/* FIX SPACING HOW TO PLAY   */
+/* HOW TO PLAY UI            */
 /* ========================= */
 
-/* JARAK TAB KE BAWAH */
 .tabs{
   display:flex;
   gap:10px;
   margin-bottom:20px;
 }
 
-/* CONTAINER TOMBOL */
+.tab{
+  padding:8px 16px;
+  border:none;
+  background:#1d2230;
+  color:#aaa;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tab.active{
+  background:#6c8cff;
+  color:white;
+}
+
+/* ACTION BUTTON GROUP */
 .actions{
   margin-top:15px;
   margin-bottom:20px;
   display:flex;
   flex-wrap:wrap;
-  gap:12px; /* jarak antar tombol */
+  gap:12px;
 }
 
-/* TOMBOL */
 .actions button{
   padding:10px 16px;
   background:#6c8cff;
@@ -29,8 +144,46 @@
   transition:.2s;
 }
 
-/* HOVER BIAR LEBIH HIDUP */
 .actions button:hover{
   transform:translateY(-2px);
   box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+/* COPY EFFECT */
+.actions button.copied{
+  background:#00c853;
+}
+
+/* DOWNLOAD EFFECT */
+.actions button.downloading{
+  background:#ffaa00;
+}
+
+.actions button.done{
+  background:#00c853;
+}
+
+/* TOAST */
+#toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#1d2230;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+#toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HIDDEN */
+.hidden{
+  display:none;
 }
