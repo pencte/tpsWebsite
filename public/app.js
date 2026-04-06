@@ -1,9 +1,29 @@
 function show(id, el){
-  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+
+  // hide page
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.add("hidden");
+  });
+
   document.getElementById(id).classList.remove("hidden");
 
-  document.querySelectorAll(".menu").forEach(m=>m.classList.remove("active"));
-  el.classList.add("active");
+  // sidebar active
+  document.querySelectorAll(".menu").forEach(m=>{
+    m.classList.remove("active");
+  });
+
+  if(el && el.classList.contains("menu")){
+    el.classList.add("active");
+  }
+
+  // bottom nav active
+  document.querySelectorAll(".nav-item").forEach(n=>{
+    n.classList.remove("active");
+  });
+
+  if(el && el.classList.contains("nav-item")){
+    el.classList.add("active");
+  }
 }
 
 function showHow(type, el){
