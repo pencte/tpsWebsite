@@ -3,259 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTFS ULTRA LAUNCHER</title>
+<title>GTFS Launcher</title>
 
 <style>
 :root{
---r:#ff3b3b;
---g:#00ff9d;
---b:#00bfff;
+  --bg:#0f1115;
+  --card:#1a1d24;
+  --accent:#4f8cff;
+  --text:#e6e6e6;
+  --sub:#9aa0a6;
 }
 
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Consolas;
-background:#000;
-color:#0f0;
-overflow:hidden;
+  margin:0;
+  font-family:Inter,Segoe UI,Arial;
+  background:linear-gradient(180deg,#0f1115,#0a0c10);
+  color:var(--text);
 }
 
-/* RGB BACKGROUND */
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:linear-gradient(45deg,#000,#1a0000,#001a0f,#001a2a);
-background-size:400% 400%;
-animation:bg 10s infinite alternate;
-z-index:-2;
-}
-@keyframes bg{
-0%{background-position:0%}
-100%{background-position:100%}
+/* HEADER */
+header{
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-/* GLITCH TITLE */
-.glitch{
-font-size:40px;
-text-align:center;
-margin-top:20px;
-animation:glitch 1s infinite;
-}
-@keyframes glitch{
-0%{text-shadow:2px 0 red,-2px 0 blue;}
-50%{text-shadow:-2px 0 red,2px 0 blue;}
-100%{text-shadow:2px 0 red,-2px 0 blue;}
+h1{
+  margin:0;
+  font-size:20px;
 }
 
 /* NAV */
-nav{
-text-align:center;
-margin:20px;
-}
 nav a{
-margin:0 10px;
-cursor:pointer;
-color:#0f0;
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--sub);
+  cursor:pointer;
+  transition:.2s;
 }
+
+nav a:hover{
+  color:white;
+}
+
 nav a.active{
-color:#fff;
-border-bottom:2px solid #0f0;
+  color:white;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:4px;
 }
 
 /* TAB */
 .tab{
-display:none;
-padding:20px;
-text-align:center;
+  display:none;
+  opacity:0;
+  transform:translateY(10px);
+  transition:.3s;
+  padding:40px;
 }
+
 .tab.active{
-display:block;
-animation:fade .5s;
-}
-@keyframes fade{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1}
+  display:block;
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* CARD */
 .card{
-background:rgba(0,0,0,.7);
-padding:20px;
-border:1px solid #0f0;
-max-width:800px;
-margin:auto;
+  background:var(--card);
+  border-radius:16px;
+  padding:25px;
+  max-width:900px;
+  margin:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 /* BUTTON */
 .btn{
-padding:10px 20px;
-background:black;
-border:1px solid #0f0;
-color:#0f0;
-cursor:pointer;
-margin:5px;
+  padding:12px 20px;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  cursor:pointer;
+  margin:5px;
+  transition:.2s;
 }
+
 .btn:hover{
-background:#0f0;
-color:#000;
+  transform:translateY(-2px);
+  box-shadow:0 6px 15px rgba(79,140,255,.3);
 }
 
-/* TERMINAL */
-#terminal{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-height:200px;
-background:#000;
-overflow:auto;
-font-size:12px;
-padding:10px;
-border-top:1px solid #0f0;
+/* STATUS */
+.status{
+  margin-top:10px;
+  color:var(--sub);
 }
 
-/* LOADING */
-#loading{
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-flex-direction:column;
+/* GRID HOME */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-/* PARTICLE */
-canvas{
-position:fixed;
-top:0;
-z-index:-1;
+.box{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-<h2>BOOTING SYSTEM...</h2>
-</div>
+<header>
+  <h1>GTFS Launcher</h1>
 
-<canvas id="c"></canvas>
+  <nav>
+    <a class="active" onclick="tab(event,'home')">Home</a>
+    <a onclick="tab(event,'how')">How</a>
+    <a onclick="tab(event,'community')">Community</a>
+    <a onclick="tab(event,'download')">Download</a>
+    <a onclick="tab(event,'rules')">Rules</a>
+  </nav>
+</header>
 
-<h1 class="glitch">GTFS ULTRA LAUNCHER</h1>
-
-<nav>
-<a class="active" onclick="tab(event,'home')">HOME</a>
-<a onclick="tab(event,'how')">HOW</a>
-<a onclick="tab(event,'community')">COMMUNITY</a>
-<a onclick="tab(event,'download')">DOWNLOAD</a>
-<a onclick="tab(event,'rules')">RULES</a>
-</nav>
-
+<!-- HOME -->
 <div class="tab active" id="home">
-<div class="card">
-<h2>SERVER ONLINE</h2>
-<p id="status">Checking...</p>
-<button class="btn" onclick="playMusic()">PLAY MUSIC</button>
-</div>
+  <div class="grid">
+
+    <div class="box">
+      <h3>Status Server</h3>
+      <div class="status" id="status">Checking...</div>
+    </div>
+
+    <div class="box">
+      <h3>Quick Actions</h3>
+      <button class="btn">Play</button>
+      <button class="btn">Download</button>
+    </div>
+
+  </div>
 </div>
 
+<!-- HOW -->
 <div class="tab" id="how">
-<div class="card">
-<pre>103.59.161.68 growtopia1.com</pre>
-</div>
+  <div class="card">
+<pre>
+103.59.161.68 growtopia1.com
+103.59.161.68 growtopia2.com
+</pre>
+  </div>
 </div>
 
+<!-- COMMUNITY -->
 <div class="tab" id="community">
-<div class="card">
-<button class="btn">WhatsApp</button>
-<button class="btn">Discord</button>
-</div>
+  <div class="card">
+    <button class="btn">WhatsApp</button>
+    <button class="btn">Discord</button>
+  </div>
 </div>
 
+<!-- DOWNLOAD -->
 <div class="tab" id="download">
-<div class="card">
-<button class="btn">DOWNLOAD APK</button>
-</div>
+  <div class="card">
+    <button class="btn">Download APK</button>
+  </div>
 </div>
 
+<!-- RULES -->
 <div class="tab" id="rules">
-<div class="card">
-<p>NO CHEAT / NO SPAM</p>
+  <div class="card">
+    <p>No cheat, no spam.</p>
+  </div>
 </div>
-</div>
-
-<!-- TERMINAL -->
-<div id="terminal"></div>
 
 <script>
 
-/* LOADING */
-setTimeout(()=>loading.style.display="none",1500);
-
 /* TAB */
 function tab(e,id){
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-e.target.classList.add("active");
-sound();
-log("Switching to "+id);
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
+
+  document.getElementById(id).classList.add("active");
+  e.target.classList.add("active");
 }
 
-/* SOUND */
-function sound(){
-new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3").play();
-}
-
-/* MUSIC */
-let music;
-function playMusic(){
-music=new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-music.loop=true;
-music.play();
-}
-
-/* TERMINAL LOG */
-function log(t){
-const term=document.getElementById("terminal");
-term.innerHTML+="<div>> "+t+"</div>";
-term.scrollTop=term.scrollHeight;
-}
-
-/* FAKE STATUS */
+/* STATUS SIMPEL */
 setInterval(()=>{
-document.getElementById("status").innerText="ONLINE - "+Math.floor(Math.random()*200)+" PLAYERS";
+  document.getElementById("status").innerText =
+    "Online • "+Math.floor(Math.random()*150)+" players";
 },2000);
-
-/* PARTICLE */
-const c=document.getElementById("c");
-const ctx=c.getContext("2d");
-c.width=innerWidth;
-c.height=innerHeight;
-
-let p=[];
-for(let i=0;i<100;i++){
-p.push({x:Math.random()*c.width,y:Math.random()*c.height});
-}
-
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-p.forEach(pt=>{
-ctx.fillStyle="#0f0";
-ctx.fillRect(pt.x,pt.y,2,2);
-pt.y+=1;
-if(pt.y>c.height)pt.y=0;
-});
-}
-setInterval(draw,30);
 
 </script>
 
