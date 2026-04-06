@@ -14,11 +14,19 @@ function showHow(type, el){
   el.classList.add("active");
 }
 
+function showToast(text){
+  const t=document.getElementById("toast");
+  t.innerText=text;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
+}
+
 function copyText(btn){
-  const url = window.location.origin + "/raw/terorismeps";
+  const url=window.location.origin+"/raw/terorismeps";
   navigator.clipboard.writeText(url);
 
   btn.innerText="Copied!";
+  showToast("Copied URL");
   setTimeout(()=>btn.innerText="Copy",1500);
 }
 
@@ -27,19 +35,41 @@ function downloadFile(url,name){
   a.href=url;
   a.download=name;
   a.click();
+  showToast("Download started");
 }
 
+/* CAROUSEL */
 const preview=document.getElementById("preview");
-let x=0;
+const dots=document.getElementById("dots");
+let index=0;
 
-setInterval(()=>{
-  if(!preview) return;
-  x+=220;
-  if(x>=preview.scrollWidth) x=0;
-  preview.scrollTo({left:x,behavior:"smooth"});
-},2500);
+if(preview){
+  const imgs=preview.children;
 
+  for(let i=0;i<imgs.length;i++){
+    let d=document.createElement("div");
+    if(i===0) d.classList.add("active");
+    dots.appendChild(d);
+  }
+
+  function slide(){
+    index++;
+    if(index>=imgs.length) index=0;
+
+    preview.scrollTo({
+      left:imgs[index].offsetLeft,
+      behavior:"smooth"
+    });
+
+    [...dots.children].forEach(d=>d.classList.remove("active"));
+    dots.children[index].classList.add("active");
+  }
+
+  setInterval(slide,3000);
+}
+
+/* STATUS */
 setInterval(()=>{
   document.getElementById("status").innerText="Online";
-  document.getElementById("players").innerText=Math.floor(Math.random()*100);
+  document.getElementById("players").innerText=Math.floor(Math.random()*200);
 },2000);
