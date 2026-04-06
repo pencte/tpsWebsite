@@ -4,19 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TerorismePS</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
 <div class="bg"></div>
-
-<!-- TOAST -->
 <div id="toast"></div>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
   <h2>TerorismePS</h2>
 
@@ -25,7 +20,6 @@
   <div class="menu" onclick="show('rules')">Rules</div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
 <!-- DASHBOARD -->
@@ -33,7 +27,6 @@
   <div class="card big">
     <h1>Welcome to TerorismePS</h1>
     <p>Private server Growtopia Indonesia</p>
-
     <button class="play">PLAY</button>
   </div>
 
@@ -65,33 +58,30 @@
     <div id="android" class="howContent">
       <div class="actions">
         <button onclick="copyText('PTUNNEL_URL')">Copy PTunnel URL</button>
-        <button onclick="downloadFile('/files/host.txt','host.txt')">Download Host</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
         <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk')">Download PowerTunnel</button>
       </div>
 
 <pre>
-1. Download PowerTunnel app.
-2. Copy host URL.
-3. Buka PowerTunnel.
-4. Masuk ke Host Settings.
-5. Paste URL.
-6. Login GTPS.
+1. Download PowerTunnel
+2. Copy URL
+3. Paste ke host settings
+4. Login GTPS
 </pre>
     </div>
 
     <!-- WINDOWS -->
     <div id="windows" class="howContent hidden">
       <div class="actions">
-        <button onclick="downloadFile('/files/host.txt','host.txt')">Download Host</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
       </div>
 
 <pre>
-1. Press Win + R
-2. Ketik: C:\Windows\System32\drivers\etc
-3. Edit file "hosts"
-4. Paste host
-5. Save
-6. Login
+1. Win + R
+2. Open hosts
+3. Paste config
+4. Save
+5. Login
 </pre>
     </div>
 
@@ -102,10 +92,10 @@
       </div>
 
 <pre>
-1. Download Surge 5
+1. Install Surge
 2. Import URL
 3. Paste URL
-4. Aktifkan VPN
+4. Enable VPN
 5. Login
 </pre>
     </div>
