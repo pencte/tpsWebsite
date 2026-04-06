@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TerorismePS</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND FX -->
+<div class="parallax">
+  <div class="layer" id="layer1"></div>
+  <div class="layer" id="layer2"></div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<canvas id="particles"></canvas>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>TerorismePS</h2>
+  <div onclick="show('home')">Dashboard</div>
+  <div onclick="show('players')">Players</div>
+  <div onclick="show('logs')">Logs</div>
+  <div onclick="show('admin')">Admin</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- DASHBOARD -->
+<div id="home">
+  <div class="card">
+    <h3>Status Server</h3>
+    <p id="status">Loading...</p>
+  </div>
+</div>
+
+<!-- PLAYERS -->
+<div id="players" class="hidden">
+  <div class="card">
+    <h3>Player List</h3>
+    <ul id="playerList"></ul>
+  </div>
+</div>
+
+<!-- LOG -->
+<div id="logs" class="hidden">
+  <div class="card">
+    <h3>Logs</h3>
+    <div id="logBox"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="hidden">
+  <div class="card">
+    <input id="cmd" placeholder="command...">
+    <button onclick="send()">Execute</button>
+  </div>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
