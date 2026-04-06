@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TerorismePS</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -15,9 +16,9 @@
 <div class="sidebar">
   <h2>TerorismePS</h2>
 
-  <div class="menu active" onclick="show('home')">Dashboard</div>
-  <div class="menu" onclick="show('how')">How To Play</div>
-  <div class="menu" onclick="show('rules')">Rules</div>
+  <div class="menu active" onclick="show('home', this)">Dashboard</div>
+  <div class="menu" onclick="show('how', this)">How To Play</div>
+  <div class="menu" onclick="show('rules', this)">Rules</div>
 </div>
 
 <div class="main">
@@ -41,6 +42,19 @@
       <p id="players">0</p>
     </div>
   </div>
+
+  <!-- SERVER PREVIEW -->
+  <div class="card">
+    <h3>Server Preview</h3>
+
+    <div class="preview-container" id="preview">
+      <img src="/preview/1.jpg">
+      <img src="/preview/2.jpg">
+      <img src="/preview/3.jpg">
+      <img src="/preview/4.jpg">
+    </div>
+  </div>
+
 </div>
 
 <!-- HOW -->
@@ -49,17 +63,17 @@
     <h2>How To Play</h2>
 
     <div class="tabs">
-      <button onclick="showHow('android')" class="tab active">Android</button>
-      <button onclick="showHow('windows')" class="tab">Windows</button>
-      <button onclick="showHow('ios')" class="tab">iOS</button>
+      <button onclick="showHow('android', this)" class="tab active">Android</button>
+      <button onclick="showHow('windows', this)" class="tab">Windows</button>
+      <button onclick="showHow('ios', this)" class="tab">iOS</button>
     </div>
 
     <!-- ANDROID -->
     <div id="android" class="howContent">
       <div class="actions">
-        <button onclick="copyText('PTUNNEL_URL')">Copy PTunnel URL</button>
-        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
-        <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk')">Download PowerTunnel</button>
+        <button onclick="copyText('PTUNNEL_URL', this)">Copy PTunnel URL</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
+        <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
       </div>
 
 <pre>
@@ -73,7 +87,7 @@
     <!-- WINDOWS -->
     <div id="windows" class="howContent hidden">
       <div class="actions">
-        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
       </div>
 
 <pre>
@@ -88,7 +102,7 @@
     <!-- IOS -->
     <div id="ios" class="howContent hidden">
       <div class="actions">
-        <button onclick="copyText('SURGE_URL')">Copy Surge URL</button>
+        <button onclick="copyText('SURGE_URL', this)">Copy Surge URL</button>
       </div>
 
 <pre>
@@ -117,6 +131,6 @@
 
 </div>
 
-<script src="app.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>
