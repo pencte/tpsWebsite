@@ -3,294 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terorisme Private Server (TPS)</title>
+<title>GTFS Server</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --pink: #ff5fa2;
-  --pink-dark: #e6498f;
-  --pink-soft: #ffe6f0;
-}
-
-* { box-sizing: border-box; }
-
 body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(#ffd6e8, #ffffff);
-  text-align: center;
-  color: #333;
+  margin:0;
+  font-family:Poppins;
+  background:#0f0f1a;
+  color:white;
+  text-align:center;
 }
 
-header {
-  background: linear-gradient(135deg, var(--pink), #ff8fc7);
-  color: white;
-  padding: 30px 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.2);
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 12px;
-  font-weight: bold;
-}
-
-.logo {
-  width: 260px;
-  max-width: 90%;
-  border-radius: 16px;
-  margin: 15px 0;
-  box-shadow: 0 6px 20px rgba(0,0,0,.3);
-}
-
-.lang {
-  margin-top: 10px;
-}
-
-.lang button {
-  background: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  margin: 0 4px;
-  cursor: pointer;
-  color: var(--pink);
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 .container {
-  padding: 50px 20px;
-}
-
-.button {
-  display: inline-block;
-  margin: 8px;
-  padding: 12px 26px;
-  background: linear-gradient(135deg, var(--pink), #ff8fc7);
-  color: white;
-  border-radius: 999px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 6px 15px rgba(255,95,162,.4);
+  padding:60px 20px;
 }
 
 .card {
-  background: white;
-  max-width: 900px;
-  margin: auto;
-  text-align: left;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+  max-width:600px;
+  margin:auto;
 }
 
-.card h2 {
-  text-align: center;
-  color: var(--pink);
-}
-
-.card h3 {
-  color: var(--pink-dark);
-}
-
-pre {
-  background: var(--pink-soft);
-  padding: 15px;
-  border-radius: 12px;
-  overflow-x: auto;
-}
-
-footer {
-  background: var(--pink-soft);
-  padding: 15px;
-  font-size: 0.85em;
-  margin-top: 40px;
-}
+.online { color:#00ff9d; }
+.offline { color:red; }
 </style>
 </head>
 
 <body>
 
-<header>
-  <img src="gtfs.jpg" class="logo">
-  <h1>Growtopia Fiki Server</h1>
+<canvas id="particles"></canvas>
 
-  <p data-id="Server Private Growtopia Indonesia"
-     data-en="Indonesian Growtopia Private Server">
-     Server Private Growtopia Indonesia
-  </p>
+<h1>GTFS Server</h1>
 
-  <nav>
-    <a href="#home" data-id="Beranda" data-en="Home">Beranda</a>
-    <a href="#how" data-id="Cara Bermain" data-en="How to Play">Cara Bermain</a>
-    <a href="#community" data-id="Komunitas" data-en="Community">Komunitas</a>
-    <a href="#download" data-id="Download" data-en="Download">Download</a>
-    <a href="#rules" data-id="Peraturan" data-en="Rules">Peraturan</a>
-  </nav>
-
-  <div class="lang">
-    <button onclick="setLang('id')">🇮🇩 ID</button>
-    <button onclick="setLang('en')">🇬🇧 EN</button>
-  </div>
-</header>
-
-<!-- HOME -->
-<div class="container" id="home">
-  <h2 data-id="Selamat Datang di GTFS!"
-      data-en="Welcome to GTFS!">
-      Selamat Datang di GTFS!
-  </h2>
-
-  <p data-id="Server gratis, stabil, dan ringan untuk semua pemain."
-     data-en="Free, stable, and lightweight server for everyone.">
-     Server gratis, stabil, dan ringan untuk semua pemain.
-  </p>
-
-  <img src="gtfs2.jpg" class="logo">
-</div>
-
-<!-- HOW TO PLAY -->
-<div class="container" id="how">
+<div class="container">
   <div class="card">
-    <h2 data-id="Cara Bermain"
-        data-en="How to Play">
-        Cara Bermain
-    </h2>
-
-    <!-- WINDOWS -->
-    <h3>🖥️ Windows</h3>
-    <ol>
-      <li data-id="Gunakan Growtopia versi terbaru."
-          data-en="Use the latest Growtopia version.">
-          Gunakan Growtopia versi terbaru.
-      </li>
-      <li data-id="Edit file hosts sebagai Administrator."
-          data-en="Edit the hosts file as Administrator.">
-          Edit file hosts sebagai Administrator.
-      </li>
-    </ol>
-
-<pre>
-103.59.161.68 growtopia1.com
-103.59.161.68 growtopia2.com
-103.59.161.68 www.growtopia1.com
-103.59.161.68 www.growtopia2.com
-</pre>
-
-    <!-- IOS -->
-    <h3>🍎 iOS (Surge 4 / 5)</h3>
-    <ol>
-      <li data-id="Download Surge 4 atau Surge 5 dari App Store."
-          data-en="Download Surge 4 or Surge 5 from the App Store.">
-          Download Surge 4 atau Surge 5 dari App Store.
-      </li>
-      <li data-id="Buka Surge lalu tekan menu kiri atas."
-          data-en="Open Surge and tap the top-left menu.">
-          Buka Surge lalu tekan menu kiri atas.
-      </li>
-      <li data-id="Pilih Edit Configuration (Text Mode)."
-          data-en="Select Edit Configuration (Text Mode).">
-          Pilih Edit Configuration (Text Mode).
-      </li>
-      <li data-id="Paste konfigurasi berikut:"
-          data-en="Paste the following configuration:">
-          Paste konfigurasi berikut:
-      </li>
-    </ol>
-
-<pre>
-[General]
-
-[Rule]
-FINAL,DIRECT
-
-[Host]
-www.growtopia2.com = 103.59.161.68
-www.growtopia1.com = 103.59.161.68
-growtopia2.com = 103.59.161.68
-growtopia1.com = 103.59.161.68
-</pre>
-
-    <ol start="5">
-      <li data-id="Tekan Done lalu Start."
-          data-en="Tap Done then Start.">
-          Tekan Done lalu Start.
-      </li>
-      <li data-id="Buka Growtopia dan mainkan."
-          data-en="Open Growtopia and start playing.">
-          Buka Growtopia dan mainkan.
-      </li>
-    </ol>
-
-    <!-- ANDROID -->
-    <h3>🤖 Android</h3>
-    <p data-id="Gunakan PTunnel atau vHost lalu paste host berikut."
-       data-en="Use PTunnel or vHost then paste the host below.">
-       Gunakan PTunnel atau vHost lalu paste host berikut.
-    </p>
-
-    <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
-      https://gtpshost.com/raw/GrowtopiaFS
-    </a>
+    <h2>Server Status</h2>
+    Status: <span id="status">Loading...</span><br><br>
+    Player: <span id="players">0</span>
   </div>
 </div>
-
-<!-- COMMUNITY -->
-<div class="container" id="community">
-  <h2 data-id="Komunitas Kami"
-      data-en="Our Community">
-      Komunitas Kami
-  </h2>
-
-  <a class="button" href="https://chat.whatsapp.com/KrgtZkXHXvH4SB6ge3GWK7" target="_blank">WhatsApp</a>
-  <a class="button" href="https://discord.gg/gee4MbcYxY" target="_blank">Discord</a>
-</div>
-
-<!-- DOWNLOAD -->
-<div class="container" id="download">
-  <h2>Download</h2>
-
-  <a class="button" href="https://www.mediafire.com/file/iib8ux5kow7w6gx/gtfs.apk/file" target="_blank">APK GTFS</a>
-  <a class="button" href="https://gtpshost.com/d/GrowtopiaFS" target="_blank">All in One Host</a>
-</div>
-
-<!-- RULES -->
-<div class="container" id="rules">
-  <h2 data-id="Peraturan Server"
-      data-en="Server Rules">
-      Peraturan Server
-  </h2>
-
-  <ul style="max-width:600px;margin:auto;text-align:left;">
-    <li data-id="Dilarang spam atau scam."
-        data-en="No spam or scam.">
-        Dilarang spam atau scam.
-    </li>
-    <li data-id="Gunakan nama yang sopan."
-        data-en="Use a proper username.">
-        Gunakan nama yang sopan.
-    </li>
-    <li data-id="Dilarang cheat ilegal."
-        data-en="No illegal cheats.">
-        Dilarang cheat ilegal.
-    </li>
-  </ul>
-</div>
-
-<footer>
-  © 2022 TerorismePS Server • Made by Test
-</footer>
 
 <script>
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-id]").forEach(el => {
-    el.textContent = el.getAttribute("data-" + lang);
+async function getStatus() {
+  try {
+    const res = await fetch("/api/status");
+    const data = await res.json();
+
+    const s = document.getElementById("status");
+    const p = document.getElementById("players");
+
+    s.textContent = data.status;
+    p.textContent = data.players;
+
+    s.className = data.status === "online" ? "online" : "offline";
+
+  } catch {
+    document.getElementById("status").textContent = "ERROR";
+  }
+}
+
+setInterval(getStatus, 5000);
+getStatus();
+
+/* PARTICLE */
+const c = document.getElementById("particles");
+const ctx = c.getContext("2d");
+
+c.width = innerWidth;
+c.height = innerHeight;
+
+let arr = [];
+for(let i=0;i<50;i++){
+  arr.push({x:Math.random()*c.width,y:Math.random()*c.height});
+}
+
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  arr.forEach(a=>{
+    ctx.fillRect(a.x,a.y,2,2);
+    a.y+=0.5;
+    if(a.y>c.height) a.y=0;
   });
 }
+
+setInterval(draw,30);
 </script>
 
 </body>
 </html>
-
