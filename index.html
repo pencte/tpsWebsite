@@ -7,9 +7,9 @@
 
 <style>
 :root {
-  --pink: #ff5fa2;
-  --pink-dark: #e6498f;
-  --pink-soft: #ffe6f0;
+  --red: #ff3b3b;
+  --green: #00ff9d;
+  --blue: #00bfff;
 }
 
 * { box-sizing: border-box; }
@@ -17,129 +17,108 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(#ffd6e8, #ffffff);
+  background: linear-gradient(135deg, #000000, #2a0000, #002a1a, #001a2a);
+  background-size: 400% 400%;
+  animation: bgMove 12s infinite alternate;
+  color: #fff;
   text-align: center;
-  color: #333;
 }
 
-/* TAB ANIMATION */
+/* BACKGROUND ANIMATION */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* TAB */
 .tab-content {
   display: none;
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  transition: all .4s ease;
+  transform: translateY(20px);
+  transition: .4s;
 }
-
 .tab-content.active {
   display: block;
   opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* NAV ACTIVE */
-nav a.active {
-  border-bottom: 3px solid white;
+  transform: translateY(0);
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, var(--pink), #ff8fc7);
-  color: white;
-  padding: 30px 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.2);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  padding: 30px;
 }
 
+/* NAV */
 nav a {
-  color: white;
-  text-decoration: none;
+  color: #ccc;
   margin: 0 12px;
+  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
-  padding-bottom: 4px;
+  transition: .3s;
 }
 
+nav a:hover {
+  color: var(--green);
+}
+
+nav a.active {
+  color: white;
+  border-bottom: 2px solid var(--green);
+}
+
+/* LOGO */
 .logo {
   width: 260px;
-  max-width: 90%;
   border-radius: 16px;
   margin: 15px 0;
-  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  box-shadow: 0 0 30px rgba(0,255,157,0.4);
 }
 
-.lang {
-  margin-top: 10px;
-}
-
-.lang button {
-  background: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  margin: 0 4px;
-  cursor: pointer;
-  color: var(--pink);
-}
-
-.container {
-  padding: 50px 20px;
-}
-
+/* BUTTON */
 .button {
   display: inline-block;
   margin: 8px;
   padding: 12px 26px;
-  background: linear-gradient(135deg, var(--pink), #ff8fc7);
-  color: white;
   border-radius: 999px;
+  background: linear-gradient(135deg, var(--red), var(--blue));
+  color: white;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 6px 15px rgba(255,95,162,.4);
+  box-shadow: 0 0 15px rgba(0,255,157,0.3);
   transition: .3s;
 }
 
 .button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 20px rgba(255,95,162,.6);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px var(--green);
 }
 
-/* CARD UPGRADE (launcher feel) */
+/* CARD */
 .card {
-  background: white;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
   max-width: 900px;
   margin: auto;
-  text-align: left;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.15);
-  transition: .3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h2 {
-  text-align: center;
-  color: var(--pink);
-}
-
-.card h3 {
-  color: var(--pink-dark);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 pre {
-  background: var(--pink-soft);
+  background: rgba(0,0,0,0.4);
   padding: 15px;
   border-radius: 12px;
-  overflow-x: auto;
+  color: var(--green);
 }
 
+/* FOOTER */
 footer {
-  background: var(--pink-soft);
-  padding: 15px;
-  font-size: 0.85em;
   margin-top: 40px;
+  padding: 15px;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -150,11 +129,6 @@ footer {
   <img src="gtfs.jpg" class="logo">
   <h1>Growtopia Fiki Server</h1>
 
-  <p data-id="Server Private Growtopia Indonesia"
-     data-en="Indonesian Growtopia Private Server">
-     Server Private Growtopia Indonesia
-  </p>
-
   <nav>
     <a class="active" onclick="openTab(event,'home')">Beranda</a>
     <a onclick="openTab(event,'how')">Cara Bermain</a>
@@ -162,32 +136,18 @@ footer {
     <a onclick="openTab(event,'download')">Download</a>
     <a onclick="openTab(event,'rules')">Peraturan</a>
   </nav>
-
-  <div class="lang">
-    <button onclick="setLang('id')">🇮🇩 ID</button>
-    <button onclick="setLang('en')">🇬🇧 EN</button>
-  </div>
 </header>
 
 <!-- HOME -->
 <div class="container tab-content active" id="home">
-  <h2 data-id="Selamat Datang di GTFS!" data-en="Welcome to GTFS!">
-      Selamat Datang di GTFS!
-  </h2>
-
-  <p data-id="Server gratis, stabil, dan ringan untuk semua pemain."
-     data-en="Free, stable, and lightweight server for everyone.">
-     Server gratis, stabil, dan ringan untuk semua pemain.
-  </p>
-
-  <img src="gtfs2.jpg" class="logo">
+  <h2>Selamat Datang di GTFS 🔥</h2>
+  <p>Server gratis, stabil, dan ringan.</p>
 </div>
 
 <!-- HOW -->
 <div class="container tab-content" id="how">
   <div class="card">
     <h2>Cara Bermain</h2>
-    <h3>🖥️ Windows</h3>
 <pre>
 103.59.161.68 growtopia1.com
 103.59.161.68 growtopia2.com
@@ -214,18 +174,10 @@ footer {
 </div>
 
 <footer>
-  © 2022 TerorismePS Server • Made by Test
+  © 2022 TerorismePS Server
 </footer>
 
 <script>
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-id]").forEach(el => {
-    el.textContent = el.getAttribute("data-" + lang);
-  });
-}
-
-/* TAB ANIMATION */
 function openTab(evt, tabId) {
   document.querySelectorAll(".tab-content").forEach(el => {
     el.classList.remove("active");
