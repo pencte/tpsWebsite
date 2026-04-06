@@ -22,10 +22,26 @@ body {
   color: #333;
 }
 
-/* TAB */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+/* TAB ANIMATION */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: all .4s ease;
+}
 
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* NAV ACTIVE */
+nav a.active {
+  border-bottom: 3px solid white;
+}
+
+/* HEADER */
 header {
   background: linear-gradient(135deg, var(--pink), #ff8fc7);
   color: white;
@@ -39,6 +55,7 @@ nav a {
   margin: 0 12px;
   font-weight: bold;
   cursor: pointer;
+  padding-bottom: 4px;
 }
 
 .logo {
@@ -78,16 +95,28 @@ nav a {
   font-weight: bold;
   text-decoration: none;
   box-shadow: 0 6px 15px rgba(255,95,162,.4);
+  transition: .3s;
 }
 
+.button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(255,95,162,.6);
+}
+
+/* CARD UPGRADE (launcher feel) */
 .card {
   background: white;
   max-width: 900px;
   margin: auto;
   text-align: left;
   padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card h2 {
@@ -127,11 +156,11 @@ footer {
   </p>
 
   <nav>
-    <a onclick="openTab('home')">Beranda</a>
-    <a onclick="openTab('how')">Cara Bermain</a>
-    <a onclick="openTab('community')">Komunitas</a>
-    <a onclick="openTab('download')">Download</a>
-    <a onclick="openTab('rules')">Peraturan</a>
+    <a class="active" onclick="openTab(event,'home')">Beranda</a>
+    <a onclick="openTab(event,'how')">Cara Bermain</a>
+    <a onclick="openTab(event,'community')">Komunitas</a>
+    <a onclick="openTab(event,'download')">Download</a>
+    <a onclick="openTab(event,'rules')">Peraturan</a>
   </nav>
 
   <div class="lang">
@@ -157,43 +186,26 @@ footer {
 <!-- HOW -->
 <div class="container tab-content" id="how">
   <div class="card">
-    <h2 data-id="Cara Bermain" data-en="How to Play">Cara Bermain</h2>
-
+    <h2>Cara Bermain</h2>
     <h3>🖥️ Windows</h3>
-    <ol>
-      <li data-id="Gunakan Growtopia versi terbaru." data-en="Use the latest Growtopia version.">Gunakan Growtopia versi terbaru.</li>
-      <li data-id="Edit file hosts sebagai Administrator." data-en="Edit the hosts file as Administrator.">Edit file hosts sebagai Administrator.</li>
-    </ol>
-
 <pre>
 103.59.161.68 growtopia1.com
 103.59.161.68 growtopia2.com
 </pre>
-
-    <h3>🍎 iOS</h3>
-<pre>
-[Host]
-growtopia1.com = 103.59.161.68
-</pre>
-
-    <h3>🤖 Android</h3>
-    <a href="https://gtpshost.com/raw/GrowtopiaFS" target="_blank">
-      https://gtpshost.com/raw/GrowtopiaFS
-    </a>
   </div>
 </div>
 
 <!-- COMMUNITY -->
 <div class="container tab-content" id="community">
   <h2>Komunitas</h2>
-  <a class="button" href="#">WhatsApp</a>
-  <a class="button" href="#">Discord</a>
+  <a class="button">WhatsApp</a>
+  <a class="button">Discord</a>
 </div>
 
 <!-- DOWNLOAD -->
 <div class="container tab-content" id="download">
   <h2>Download</h2>
-  <a class="button" href="#">APK</a>
+  <a class="button">APK</a>
 </div>
 
 <!-- RULES -->
@@ -213,13 +225,18 @@ function setLang(lang) {
   });
 }
 
-/* TAB */
-function openTab(tabId) {
+/* TAB ANIMATION */
+function openTab(evt, tabId) {
   document.querySelectorAll(".tab-content").forEach(el => {
     el.classList.remove("active");
   });
 
+  document.querySelectorAll("nav a").forEach(a => {
+    a.classList.remove("active");
+  });
+
   document.getElementById(tabId).classList.add("active");
+  evt.target.classList.add("active");
 }
 </script>
 
