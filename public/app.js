@@ -22,7 +22,7 @@ function showToast(text){
   setTimeout(()=>toast.classList.remove("show"),2000);
 }
 
-function copyText(){
+function copyText(type){
   const url = window.location.origin + "/raw/terorismeps";
 
   navigator.clipboard.writeText(url);
@@ -31,9 +31,14 @@ function copyText(){
   const original=btn.innerText;
 
   btn.innerText="Copied!";
+  btn.classList.add("copied");
+
   showToast("Copied URL 🚀");
 
-  setTimeout(()=>btn.innerText=original,1500);
+  setTimeout(()=>{
+    btn.innerText=original;
+    btn.classList.remove("copied");
+  },1500);
 }
 
 function downloadFile(url,name){
@@ -41,6 +46,7 @@ function downloadFile(url,name){
   const original=btn.innerText;
 
   btn.innerText="Downloading...";
+  btn.classList.add("downloading");
 
   const a=document.createElement("a");
   a.href=url;
@@ -52,48 +58,40 @@ function downloadFile(url,name){
 
   setTimeout(()=>{
     btn.innerText="Done ✔";
+    btn.classList.remove("downloading");
+    btn.classList.add("done");
+
     showToast("Download started 🚀");
 
-    setTimeout(()=>btn.innerText=original,2000);
+    setTimeout(()=>{
+      btn.innerText=original;
+      btn.classList.remove("done");
+    },2000);
+
   },1000);
 }
 
-/* STATUS */
 setInterval(()=>{
   document.getElementById("status").innerText="Online";
   document.getElementById("players").innerText=Math.floor(Math.random()*100);
 },2000);
 
-/* PLAY BUTTON */
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
 
-/* PREVIEW AUTO SLIDE */
-const preview=document.getElementById("preview");
-const dots=document.getElementById("dots");
+/* AUTO SLIDE PREVIEW (TAMBAHAN) */
+const preview = document.getElementById("preview");
 
 if(preview){
-  let index=0;
-  const items=preview.children;
-
-  for(let i=0;i<items.length;i++){
-    const d=document.createElement("div");
-    if(i===0)d.classList.add("active");
-    dots.appendChild(d);
-  }
-
+  let i = 0;
   setInterval(()=>{
-    index++;
-    if(index>=items.length) index=0;
+    i++;
+    if(i >= preview.children.length) i = 0;
 
     preview.scrollTo({
-      left:items[index].offsetLeft,
-      behavior:"smooth"
+      left: preview.children[i].offsetLeft,
+      behavior: "smooth"
     });
-
-    [...dots.children].forEach(d=>d.classList.remove("active"));
-    dots.children[index].classList.add("active");
-
-  },3000);
+  }, 3000);
 }
