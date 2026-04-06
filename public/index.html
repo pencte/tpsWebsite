@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TerorismePS</title>
+
+<meta name="theme-color" content="#0b0d12">
+<link rel="manifest" href="/manifest.json">
+
 <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -69,7 +73,6 @@
     </div>
 
   </div>
-
 </div>
 
 <!-- HOW -->
@@ -85,25 +88,41 @@
 
     <div id="android" class="howContent">
       <div class="actions">
-        <button class="ripple" onclick="copyText(this)">Copy PTunnel URL</button>
-        <button class="ripple" onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
-        <button class="ripple" onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
+        <button onclick="copyText(this)">Copy PTunnel URL</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
+        <button onclick="downloadFile('/powertunnel.apk','powertunnel.apk', this)">Download PowerTunnel</button>
       </div>
-<pre>Android steps...</pre>
+<pre>
+1. Download PowerTunnel
+2. Copy URL
+3. Paste ke host settings
+4. Login
+</pre>
     </div>
 
     <div id="windows" class="howContent hidden">
       <div class="actions">
-        <button class="ripple" onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
+        <button onclick="downloadFile('/raw/terorismeps','host.txt', this)">Download Host</button>
       </div>
-<pre>Windows steps...</pre>
+<pre>
+1. Win + R
+2. Open hosts
+3. Paste config
+4. Save
+5. Login
+</pre>
     </div>
 
     <div id="ios" class="howContent hidden">
       <div class="actions">
-        <button class="ripple" onclick="copyText(this)">Copy Surge URL</button>
+        <button onclick="copyText(this)">Copy Surge URL</button>
       </div>
-<pre>iOS steps...</pre>
+<pre>
+1. Install Surge
+2. Import URL
+3. Enable VPN
+4. Login
+</pre>
     </div>
 
   </div>
@@ -123,13 +142,13 @@
 
 </div>
 
-<script src="/app.js"></script>
-
-  <div class="bottom-nav">
+<!-- MOBILE NAV -->
+<div class="bottom-nav">
   <div onclick="show('home', this)" class="nav-item active">🏠</div>
   <div onclick="show('how', this)" class="nav-item">🎮</div>
   <div onclick="show('rules', this)" class="nav-item">📜</div>
 </div>
-  
+
+<script src="/app.js"></script>
 </body>
 </html>
