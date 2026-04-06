@@ -6,7 +6,6 @@ body{
   display:flex;
 }
 
-/* BG */
 .bg{
   position:fixed;
   width:100%;
@@ -16,12 +15,10 @@ body{
   z-index:-1;
 }
 
-/* SIDEBAR */
 .sidebar{
   width:220px;
   background:#12151c;
   padding:20px;
-  border-right:1px solid rgba(255,255,255,0.05);
 }
 
 .menu{
@@ -30,12 +27,6 @@ body{
   cursor:pointer;
   border-radius:8px;
   color:#aaa;
-  transition:.2s;
-}
-
-.menu:hover{
-  background:#1d2230;
-  color:white;
 }
 
 .menu.active{
@@ -43,13 +34,11 @@ body{
   color:white;
 }
 
-/* MAIN */
 .main{
   flex:1;
   padding:30px;
 }
 
-/* CARD */
 .card{
   background:#161a22;
   padding:20px;
@@ -57,28 +46,23 @@ body{
   margin-bottom:20px;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:20px;
 }
 
-/* BUTTON */
 .play{
   padding:12px 30px;
   background:#6c8cff;
   border:none;
   border-radius:10px;
   color:white;
-  cursor:pointer;
 }
 
-/* TABS */
 .tabs{
   display:flex;
   gap:10px;
-  margin-bottom:15px;
 }
 
 .tab{
@@ -94,7 +78,6 @@ body{
   color:white;
 }
 
-/* ACTION */
 .actions button{
   margin-right:10px;
   padding:8px 14px;
@@ -102,10 +85,8 @@ body{
   border:none;
   color:white;
   border-radius:8px;
-  cursor:pointer;
 }
 
-/* TOAST */
 #toast{
   position:fixed;
   bottom:20px;
@@ -123,21 +104,8 @@ body{
   transform:translateY(0);
 }
 
-/* COPY FX */
-.actions button.copied{
-  background:#00c853;
-}
+.actions button.copied{ background:#00c853; }
+.actions button.downloading{ background:#ffaa00; }
+.actions button.done{ background:#00c853; }
 
-/* DOWNLOAD FX */
-.actions button.downloading{
-  background:#ffaa00;
-}
-
-.actions button.done{
-  background:#00c853;
-}
-
-/* HIDDEN */
-.hidden{
-  display:none;
-}
+.hidden{ display:none; }
