@@ -24,10 +24,6 @@ body{
   border-right:1px solid rgba(255,255,255,0.05);
 }
 
-.sidebar h2{
-  margin-bottom:20px;
-}
-
 .menu{
   padding:10px;
   margin:5px 0;
@@ -55,7 +51,7 @@ body{
 
 /* PAGE */
 .page{
-  animation:fade .4s;
+  animation:fade .3s;
 }
 
 @keyframes fade{
@@ -69,16 +65,10 @@ body{
   padding:20px;
   border-radius:12px;
   margin-bottom:20px;
-  transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-}
-
-/* BIG CARD */
-.big{
-  text-align:center;
+  transform:translateY(-3px);
 }
 
 /* GRID */
@@ -96,7 +86,38 @@ body{
   border-radius:10px;
   color:white;
   cursor:pointer;
-  margin-top:15px;
+}
+
+/* HOW TAB */
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.tab{
+  padding:8px 16px;
+  border:none;
+  background:#1d2230;
+  color:#aaa;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:#6c8cff;
+  color:white;
+}
+
+/* ACTION */
+.actions button{
+  margin-right:10px;
+  padding:8px 14px;
+  border:none;
+  background:#6c8cff;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 /* HIDDEN */
