@@ -3,44 +3,51 @@ function show(id, el){
   document.getElementById(id).classList.remove("hidden");
 
   document.querySelectorAll(".menu").forEach(m=>m.classList.remove("active"));
-  document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
-
   if(el) el.classList.add("active");
 }
 
-function showHow(type, el){
+function showHow(type){
   document.querySelectorAll(".howContent").forEach(c=>c.classList.add("hidden"));
   document.getElementById(type).classList.remove("hidden");
-
-  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-  el.classList.add("active");
 }
 
-function copyText(){
-  const url=window.location.origin+"/raw/terorismeps";
+/* COPY */
+function copyText(btn){
+  const url=location.origin+"/raw/terorismeps";
   navigator.clipboard.writeText(url);
-  alert("Copied!");
+
+  showToast("Copied URL");
 }
 
-function downloadFile(url,name){
+/* DOWNLOAD */
+function downloadFile(url){
   const a=document.createElement("a");
   a.href=url;
-  a.download=name;
   a.click();
+  showToast("Downloading...");
 }
 
-/* CAROUSEL */
-const preview=document.getElementById("preview");
-let x=0;
-setInterval(()=>{
-  if(!preview) return;
-  x+=230;
-  if(x>=preview.scrollWidth) x=0;
-  preview.scrollTo({left:x,behavior:"smooth"});
-},3000);
+/* TOAST */
+function showToast(text){
+  const t=document.getElementById("toast");
+  t.innerText=text;
+  t.style.opacity=1;
+  setTimeout(()=>t.style.opacity=0,2000);
+}
 
 /* STATUS */
 setInterval(()=>{
-  document.getElementById("status").innerText="Online";
-  document.getElementById("players").innerText=Math.floor(Math.random()*150);
+  document.getElementById("status").innerText="ONLINE";
+  document.getElementById("players").innerText=Math.floor(Math.random()*200);
 },2000);
+
+/* CAROUSEL */
+const preview=document.getElementById("preview");
+let i=0;
+
+setInterval(()=>{
+  if(!preview) return;
+  i++;
+  preview.scrollTo({left:i*260,behavior:"smooth"});
+  if(i>5) i=0;
+},3000);
