@@ -22,7 +22,7 @@ function showToast(text){
   setTimeout(()=>toast.classList.remove("show"),2000);
 }
 
-function copyText(type){
+function copyText(){
   const url = window.location.origin + "/raw/terorismeps";
 
   navigator.clipboard.writeText(url);
@@ -80,18 +80,18 @@ document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
 
-/* AUTO SLIDE PREVIEW (TAMBAHAN) */
-const preview = document.getElementById("preview");
+/* TAMBAHAN: AUTO SLIDE PREVIEW */
+const preview=document.getElementById("preview");
 
 if(preview){
-  let i = 0;
+  let i=0;
   setInterval(()=>{
     i++;
-    if(i >= preview.children.length) i = 0;
+    if(i>=preview.children.length) i=0;
 
     preview.scrollTo({
-      left: preview.children[i].offsetLeft,
-      behavior: "smooth"
+      left:preview.children[i].offsetLeft,
+      behavior:"smooth"
     });
-  }, 3000);
+  },3000);
 }
