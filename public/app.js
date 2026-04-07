@@ -95,3 +95,7 @@ if(preview){
     });
   },3000);
 }
+/* HAMBURGER TOGGLE */
+function toggleSidebar(){
+  document.querySelector(".sidebar").classList.toggle("show");
+}
