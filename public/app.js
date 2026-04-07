@@ -127,3 +127,23 @@ if(preview){
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
+/* THEME TOGGLE */
+function toggleTheme(){
+  document.body.classList.toggle("light");
+
+  // SIMPAN KE LOCAL STORAGE
+  if(document.body.classList.contains("light")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+}
+
+/* LOAD THEME */
+(function(){
+  const saved = localStorage.getItem("theme");
+
+  if(saved === "light"){
+    document.body.classList.add("light");
+  }
+})();
