@@ -71,62 +71,38 @@ function downloadFile(url,name){
   },1000);
 }
 
+/* ========================= */
+/* 🔥 REAL API STATUS        */
+/* ========================= */
+
 async function loadStatus(){
   try{
     const res = await fetch("/api/status");
     const data = await res.json();
 
-    // STATUS
+    const statusEl = document.getElementById("status");
+    const playersEl = document.getElementById("players");
+
     if(data.status === "online"){
-  statusEl.innerText = "Online";
-  statusEl.style.color = "#3fb950";
-}
-    else{
-  statusEl.innerText = "Offline";
-  statusEl.style.color = "#f85149";
-}
+      statusEl.innerText = "Online";
+      statusEl.style.color = "#3fb950";
+    }else{
+      statusEl.innerText = "Offline";
+      statusEl.style.color = "#f85149";
+    }
 
-    // PLAYERS
-    document.getElementById("players").innerText = data.players || 0;
+    playersEl.innerText = data.players || 0;
 
-  }catch(err){
+  }catch(e){
     document.getElementById("status").innerText = "Error";
     document.getElementById("players").innerText = "0";
   }
 }
 
-// AUTO REFRESH
 setInterval(loadStatus, 3000);
 loadStatus();
 
+/* PLAY BUTTON */
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
-
-/* TAMBAHAN: AUTO SLIDE PREVIEW */
-const preview=document.getElementById("preview");
-
-if(preview){
-  let i=0;
-  setInterval(()=>{
-    i++;
-    if(i>=preview.children.length) i=0;
-
-    preview.scrollTo({
-      left:preview.children[i].offsetLeft,
-      behavior:"smooth"
-    });
-  },3000);
-}
-/* HAMBURGER TOGGLE */
-function toggleSidebar(){
-  document.querySelector(".sidebar").classList.toggle("show");
-}
-/* MOBILE MENU */
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("show");
-}
-
-function closeMenu(){
-  document.getElementById("mobileMenu").classList.remove("show");
-}
