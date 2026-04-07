@@ -71,10 +71,7 @@ function downloadFile(url,name){
   },1000);
 }
 
-/* ========================= */
-/* 🔥 REAL API STATUS        */
-/* ========================= */
-
+/* API STATUS */
 async function loadStatus(){
   try{
     const res = await fetch("/api/status");
@@ -102,10 +99,6 @@ async function loadStatus(){
 setInterval(loadStatus, 3000);
 loadStatus();
 
-/* PLAY BUTTON */
-document.querySelector(".play").onclick=()=>{
-  showToast("Launcher coming soon 🎮");
-};
 /* MOBILE MENU */
 function toggleMenu(){
   document.getElementById("mobileMenu").classList.toggle("show");
@@ -115,7 +108,7 @@ function closeMenu(){
   document.getElementById("mobileMenu").classList.remove("show");
 }
 
-/* AUTO SLIDE PREVIEW */
+/* PREVIEW AUTO SLIDE */
 const preview = document.getElementById("preview");
 
 if(preview){
@@ -130,3 +123,7 @@ if(preview){
     });
   },3000);
 }
+
+document.querySelector(".play").onclick=()=>{
+  showToast("Launcher coming soon 🎮");
+};
