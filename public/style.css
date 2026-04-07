@@ -141,10 +141,8 @@ body{
 .hidden{
   display:none;
 }
-/* ========================= */
-/* MOBILE NAV                */
-/* ========================= */
 
+/* MOBILE NAV */
 .mobile-top{
   display:none;
   position:fixed;
@@ -168,7 +166,6 @@ body{
   cursor:pointer;
 }
 
-/* DROPDOWN */
 .mobile-menu{
   position:fixed;
   top:55px;
@@ -205,7 +202,6 @@ body{
   flex-shrink:0;
 }
 
-/* MOBILE MODE */
 @media(max-width:768px){
 
   .sidebar{
