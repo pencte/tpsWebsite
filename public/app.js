@@ -78,10 +78,13 @@ async function loadStatus(){
 
     // STATUS
     if(data.status === "online"){
-      document.getElementById("status").innerText = "Online";
-    }else{
-      document.getElementById("status").innerText = "Offline";
-    }
+  statusEl.innerText = "Online";
+  statusEl.style.color = "#3fb950";
+}
+    else{
+  statusEl.innerText = "Offline";
+  statusEl.style.color = "#f85149";
+}
 
     // PLAYERS
     document.getElementById("players").innerText = data.players || 0;
