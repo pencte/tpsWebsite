@@ -251,3 +251,52 @@ body{
   }
 
 }
+/* ========================= */
+/* DARK / LIGHT MODE         */
+/* ========================= */
+
+:root{
+  --bg:#0b0d12;
+  --card:#161a22;
+  --text:#eaeefb;
+  --soft:#1d2230;
+}
+
+/* LIGHT MODE */
+.light{
+  --bg:#f5f5f5;
+  --card:#ffffff;
+  --text:#111;
+  --soft:#eaeaea;
+}
+
+/* APPLY VARIABLE */
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+}
+
+.sidebar{
+  background:var(--card);
+}
+
+.menu:hover{
+  background:var(--soft);
+}
+
+.tab{
+  background:var(--soft);
+}
+
+.actions button{
+  background:#6c8cff;
+}
+
+/* TOAST */
+#toast{
+  background:var(--soft);
+}
