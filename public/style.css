@@ -233,9 +233,11 @@ body{
   }
 
   /* GRID JADI 1 KOLOM (BIAR GA KEKEKET) */
-  .grid{
-    grid-template-columns:1fr;
-  }
+ /* GRID HP TETEP 2 KOLOM */
+.grid{
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
   /* CARD JANGAN KELEBARAN */
   .card{
