@@ -106,3 +106,27 @@ loadStatus();
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
 };
+/* MOBILE MENU */
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("show");
+}
+
+/* AUTO SLIDE PREVIEW */
+const preview = document.getElementById("preview");
+
+if(preview){
+  let i = 0;
+  setInterval(()=>{
+    i++;
+    if(i >= preview.children.length) i = 0;
+
+    preview.scrollTo({
+      left: preview.children[i].offsetLeft,
+      behavior: "smooth"
+    });
+  },3000);
+}
