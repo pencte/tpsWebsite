@@ -217,3 +217,35 @@ body{
   }
 
 }
+/* ========================= */
+/* FIX MOBILE PORTRAIT MODE  */
+/* ========================= */
+
+@media(max-width:768px){
+
+  body{
+    display:block; /* biar ga horizontal */
+  }
+
+  .main{
+    padding:15px;
+    margin-top:60px;
+  }
+
+  /* GRID JADI 1 KOLOM (BIAR GA KEKEKET) */
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  /* CARD JANGAN KELEBARAN */
+  .card{
+    width:100%;
+  }
+
+  /* PREVIEW FULL WIDTH */
+  .preview img{
+    width:160px;
+    height:100px;
+  }
+
+}
