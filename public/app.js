@@ -99,3 +99,11 @@ if(preview){
 function toggleSidebar(){
   document.querySelector(".sidebar").classList.toggle("show");
 }
+/* MOBILE MENU */
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("show");
+}
