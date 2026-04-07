@@ -12,10 +12,6 @@
 <div class="bg"></div>
 <div id="toast"></div>
 
-  <!-- HAMBURGER (MOBILE ONLY) -->
-<div class="hamburger" onclick="toggleSidebar()">☰
-</div>
-  
 <div class="sidebar">
   <h2>TerorismePS</h2>
 
@@ -24,18 +20,6 @@
   <div class="menu" onclick="show('rules')">Rules</div>
 </div>
 
-  <!-- MOBILE TAB MENU -->
-<div class="mobile-top">
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-  <div class="mobile-title">TerorismePS</div>
-</div>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div onclick="show('home');closeMenu()">Dashboard</div>
-  <div onclick="show('how');closeMenu()">How To Play</div>
-  <div onclick="show('rules');closeMenu()">Rules</div>
-</div>
-  
 <div class="main">
 
 <!-- DASHBOARD -->
@@ -50,7 +34,6 @@
     <div class="card">
       <h3>Status</h3>
       <p id="status">Checking...</p>
-      <p id="status" class="status-text">Checking...</p>
     </div>
 
     <div class="card">
@@ -58,19 +41,6 @@
       <p id="players">0</p>
     </div>
   </div>
-
-  <!-- TAMBAHAN: SERVER PREVIEW -->
-  <div class="card">
-    <h3>Server Preview</h3>
-    <div class="preview-container" id="preview">
-      <img src="/preview/1.jpg">
-      <img src="/preview/2.jpg">
-      <img src="/preview/3.jpg">
-      <img src="/preview/4.jpg">
-      <img src="/preview/5.jpg">
-    </div>
-  </div>
-
 </div>
 
 <!-- HOW -->
@@ -84,24 +54,50 @@
       <button onclick="showHow('ios')" class="tab">iOS</button>
     </div>
 
+    <!-- ANDROID -->
     <div id="android" class="howContent">
       <div class="actions">
         <button onclick="copyText()">Copy PTunnel URL</button>
         <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
         <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk')">Download PowerTunnel</button>
       </div>
+
+<pre>
+1. Download PowerTunnel
+2. Copy URL
+3. Paste ke host settings
+4. Login GTPS
+</pre>
     </div>
 
+    <!-- WINDOWS -->
     <div id="windows" class="howContent hidden">
       <div class="actions">
         <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
       </div>
+
+<pre>
+1. Win + R
+2. Open hosts
+3. Paste config
+4. Save
+5. Login
+</pre>
     </div>
 
+    <!-- IOS -->
     <div id="ios" class="howContent hidden">
       <div class="actions">
         <button onclick="copyText()">Copy Surge URL</button>
       </div>
+
+<pre>
+1. Install Surge
+2. Import URL
+3. Paste URL
+4. Enable VPN
+5. Login
+</pre>
     </div>
 
   </div>
