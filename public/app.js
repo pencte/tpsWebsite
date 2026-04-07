@@ -71,10 +71,30 @@ function downloadFile(url,name){
   },1000);
 }
 
-setInterval(()=>{
-  document.getElementById("status").innerText="Online";
-  document.getElementById("players").innerText=Math.floor(Math.random()*100);
-},2000);
+async function loadStatus(){
+  try{
+    const res = await fetch("/api/status");
+    const data = await res.json();
+
+    // STATUS
+    if(data.status === "online"){
+      document.getElementById("status").innerText = "Online";
+    }else{
+      document.getElementById("status").innerText = "Offline";
+    }
+
+    // PLAYERS
+    document.getElementById("players").innerText = data.players || 0;
+
+  }catch(err){
+    document.getElementById("status").innerText = "Error";
+    document.getElementById("players").innerText = "0";
+  }
+}
+
+// AUTO REFRESH
+setInterval(loadStatus, 3000);
+loadStatus();
 
 document.querySelector(".play").onclick=()=>{
   showToast("Launcher coming soon 🎮");
