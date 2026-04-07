@@ -1,138 +1,306 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TerorismePS</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #111;
+  --soft: #f0f0f0;
+}
+
+.dark {
+  --bg: #0f1115;
+  --card: #161b22;
+  --text: #e6edf3;
+  --soft: #21262d;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  transition: 0.3s;
+}
+
+/* ☰ MENU */
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  background: var(--card);
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* CARD */
+.card {
+  background: var(--card);
+  width: 400px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* STATUS BOX */
+.status-box {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* STATUS TEXT */
+.status-text {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* BANNER */
+.banner {
+  width: 100%;
+  height: 130px;
+  border-radius: 15px;
+  background: url('/banner.png') center/cover no-repeat;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+/* BUTTON */
+.join-btn {
+  background: var(--soft);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.join-btn:hover {
+  opacity: 0.8;
+}
+
+/* ONLINE */
+.online-box {
+  background: var(--soft);
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  background: var(--soft);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.stat {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* TOGGLE */
+.toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* OWNER PANEL */
+.owner-panel {
+  margin-top: 15px;
+  background: var(--soft);
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+}
+
+/* ========================= */
+/* PREVIEW (DITAMBAH)        */
+/* ========================= */
+.preview {
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+}
+
+.preview img{
+  width:160px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+/* ========================= */
+/* MOBILE FIX (DITAMBAH)     */
+/* ========================= */
+@media(max-width:500px){
+  .card{
+    width:95%;
+  }
+
+  .row{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .stats{
+    flex-direction:row;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-<div id="toast"></div>
+<div class="menu-btn" onclick="openOwner()">☰</div>
 
-<div class="sidebar">
-  <h2>TerorismePS</h2>
+<div class="card">
 
-  <div class="menu active" onclick="show('home')">Dashboard</div>
-  <div class="menu" onclick="show('how')">How To Play</div>
-  <div class="menu" onclick="show('rules')">Rules</div>
-</div>
+  <div id="statusBox" class="status-box"></div>
 
-<div class="main">
+  <div class="toggle" onclick="toggleMode()">🌓</div>
 
-<!-- DASHBOARD -->
-<div id="home" class="page">
-  <div class="card big">
-    <h1>Welcome to TerorismePS</h1>
-    <p>Private server Growtopia Indonesia</p>
-    <button class="play">PLAY</button>
+  <div class="title">TerorismePS</div>
+  <div id="statusText" class="status-text">-</div>
+
+  <div class="banner"></div>
+
+  <div class="row">
+    <div class="join-btn" onclick="join()">JOIN SERVER</div>
+    <div class="online-box"><span id="players">0</span> online</div>
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Status</h3>
-      <p id="status">Checking...</p>
-    </div>
-
-    <div class="card">
-      <h3>Players</h3>
-      <p id="players">0</p>
-    </div>
+  <div class="stats">
+    <div class="stat">🌍<br><span id="worlds">0</span><br>Worlds</div>
+    <div class="stat">👤<br><span id="accounts">0</span><br>Accounts</div>
+    <div class="stat">🛡<br><span id="guilds">0</span><br>Guilds</div>
   </div>
 
-  <!-- SERVER PREVIEW (DITAMBAH) -->
-  <div class="card">
-    <h3>Server Preview</h3>
+  <!-- PREVIEW -->
+  <div class="preview" id="preview">
+    <img src="/preview/1.jpg">
+    <img src="/preview/2.jpg">
+    <img src="/preview/3.jpg">
+    <img src="/preview/4.jpg">
+    <img src="/preview/5.jpg">
+  </div>
 
-    <div class="preview-wrapper">
-      <div class="preview-container" id="preview">
-        <img src="/preview/1.jpg">
-        <img src="/preview/2.jpg">
-        <img src="/preview/3.jpg">
-        <img src="/preview/4.jpg">
-        <img src="/preview/5.jpg">
-      </div>
+  <!-- OWNER PANEL -->
+  <div id="ownerPanel" class="owner-panel">
+    <div class="stats">
+      <div class="stat">⚡<br><span id="cpu">0</span><br>CPU</div>
+      <div class="stat">🧠<br><span id="ram">0</span><br>RAM</div>
     </div>
   </div>
 
 </div>
 
-<!-- HOW -->
-<div id="how" class="page hidden">
-  <div class="card">
-    <h2>How To Play</h2>
+<script>
+// JOIN
+function join() {
+  window.open("https://chat.whatsapp.com/DpHWmAOsvi16FNxbmwIP7u?mode=gi_t", "_blank");
+}
 
-    <div class="tabs">
-      <button onclick="showHow('android')" class="tab active">Android</button>
-      <button onclick="showHow('windows')" class="tab">Windows</button>
-      <button onclick="showHow('ios')" class="tab">iOS</button>
-    </div>
+// DARK MODE
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
 
-    <!-- ANDROID -->
-    <div id="android" class="howContent">
-      <div class="actions">
-        <button onclick="copyText('PTUNNEL_URL')">Copy PTunnel URL</button>
-        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
-        <button onclick="downloadFile('/files/powertunnel.apk','powertunnel.apk')">Download PowerTunnel</button>
-      </div>
+// OWNER MENU
+function openOwner() {
+  const pass = prompt("Owner password:");
+  if (pass === "admin123") {
+    document.getElementById("ownerPanel").style.display = "block";
+    loadOwner();
+  } else {
+    alert("Wrong password");
+  }
+}
 
-<pre>
-1. Download PowerTunnel
-2. Copy URL
-3. Paste ke host settings
-4. Login GTPS
-</pre>
-    </div>
+// LOAD OWNER DATA
+async function loadOwner() {
+  const res = await fetch("/api/status");
+  const data = await res.json();
 
-    <!-- WINDOWS -->
-    <div id="windows" class="howContent hidden">
-      <div class="actions">
-        <button onclick="downloadFile('/raw/terorismeps','host.txt')">Download Host</button>
-      </div>
+  document.getElementById("cpu").innerText = data.cpu + "%";
+  document.getElementById("ram").innerText = data.ram.used + " GB";
+}
 
-<pre>
-1. Win + R
-2. Open hosts
-3. Paste config
-4. Save
-5. Login
-</pre>
-    </div>
+// LOAD DATA
+async function load() {
+  const res = await fetch("/api/status");
+  const data = await res.json();
 
-    <!-- IOS -->
-    <div id="ios" class="howContent hidden">
-      <div class="actions">
-        <button onclick="copyText('SURGE_URL')">Copy Surge URL</button>
-      </div>
+  const box = document.getElementById("statusBox");
+  const text = document.getElementById("statusText");
 
-<pre>
-1. Install Surge
-2. Import URL
-3. Paste URL
-4. Enable VPN
-5. Login
-</pre>
-    </div>
+  if (data.status === "online") {
+    box.style.background = "#3fb950";
+    text.innerText = "SERVER ONLINE";
+  } else {
+    box.style.background = "#f85149";
+    text.innerText = "SERVER OFFLINE";
+  }
 
-  </div>
-</div>
+  document.getElementById("players").innerText = data.players;
+  document.getElementById("worlds").innerText = data.worlds || 0;
+  document.getElementById("accounts").innerText = data.accounts || 0;
+  document.getElementById("guilds").innerText = data.guilds || 0;
+}
 
-<!-- RULES -->
-<div id="rules" class="page hidden">
-  <div class="card">
-    <h2>Rules</h2>
-    <ul>
-      <li>No spam</li>
-      <li>No cheat</li>
-      <li>Be respectful</li>
-    </ul>
-  </div>
-</div>
+setInterval(load, 3000);
+load();
 
-</div>
+/* AUTO SLIDE PREVIEW (DITAMBAH) */
+const preview=document.getElementById("preview");
+if(preview){
+  let i=0;
+  setInterval(()=>{
+    i++;
+    if(i>=preview.children.length) i=0;
+    preview.scrollTo({
+      left:preview.children[i].offsetLeft,
+      behavior:"smooth"
+    });
+  },3000);
+}
+</script>
 
-<script src="app.js"></script>
 </body>
 </html>
